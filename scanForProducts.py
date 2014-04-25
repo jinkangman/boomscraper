@@ -51,17 +51,23 @@ def parseProductPages(category,subcategory):
 		page = urllib2.urlopen(URL)
 		stream = page.readlines()
 
+                found = False
+
 		# walk through each line, parsing out our data
 		for line in stream:
-			if re.search("snippet", line):
+                        if found == True:
 				contentID = re.sub('^.*href="http://www.cowboom.com/product/', "", line, re.M|re.S)
-				contentID = re.sub('">.*$', "", contentID, re.M|re.S)
+				contentID = re.sub('/".*$', "", contentID, re.M|re.S)
 				contentID = contentID.rstrip()
-				title = re.sub(r'^.*href="http://www.cowboom.com/product/\d+">', "", line, re.M|re.S)
+				title = re.sub('^.*href="http://www.cowboom.com/product/\d+/">', "", line, re.M|re.S)
 				title = re.sub('</a>.*$', "", title, re.M|re.S)
 				title = title.rstrip()
 				#print contentID + " " + title
 				temporary_dict[contentID] = title
+                                found = False
+			if re.search("snippet", line):
+                                found = True
+
 
 		item_count = len(temporary_dict)
 
