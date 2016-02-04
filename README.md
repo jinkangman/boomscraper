@@ -15,3 +15,5 @@ You can run `python main.py` to scan the whole site or all of the scripts can al
 This program was broken up into functions so that different types of scans could be run at different intervals. For instance, if you were to automate this, scanning the main site for new products probably doesn't need to run with the same frequency as scanning the 'hot' products for new purchasable stock. Obviously, this would be a personal choice of anybody making use of this code to implement it that way.
 
 This was all written in Python2 and is free to reuse and repurpose per the MIT License.
+
+How to use this programs?
